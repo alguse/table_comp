@@ -1,0 +1,80 @@
+<p *ngIf="!JSONData">
+  Data error
+</p>
+
+<div class="wrapper">
+  <div class="container">
+    <table>
+      <thead>
+        <tr>
+            <th>
+              <div class="rowCustom">Name</div>
+            </th>
+            <th><div class="rowCustom">Phone</div></th>
+            <th><div class="rowCustom">Email</div></th>
+            <th><div class="rowCustom">Company</div></th>
+            <th><div class="rowCustom">Date of entry</div></th>
+            <th><div class="rowCustom">Org number</div></th>
+            <th><div class="rowCustom">Address 1</div></th>
+            <th><div class="rowCustom">City</div></th>
+            <th><div class="rowCustom">Zip</div></th>
+            <th><div class="rowCustom">Geo</div></th>
+            <th><div class="rowCustom">Pan</div></th>
+            <th><div class="rowCustom">Pin</div></th>
+            <th><div class="rowCustom">Id</div></th>
+            <th><div class="rowCustom">Status</div></th>
+            <th><div class="rowCustom">GUID</div></th>
+            <th><div class="rowCustom">Exit date</div></th>
+            <th><div class="rowCustom">First date</div></th>
+            <th><div class="rowCustom">Recent date</div></th>
+            <th><div class="rowCustom">Url</div></th>
+          </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let record of JSONData | slice:rowStart:rowLimit">
+            <ng-template #empty><td>N/A</td></ng-template>
+            <td *ngIf="record.name; else empty">{{record.name}}</td>
+            <td *ngIf="record.phone; else empty">{{record.phone}}</td>
+            <td *ngIf="record.email; else empty">{{record.email}}</td>
+            <td *ngIf="record.company; else empty">{{record.company}}</td>
+            <td *ngIf="record.date_entry; else empty">{{record.date_entry}}</td>
+            <td *ngIf="record.org_num; else empty">{{record.org_num}}</td>
+            <td *ngIf="record.ss_1; else empty">{{record.ss_1}}</td>
+            <td *ngIf="record.city; else empty">{{record.city}}</td>
+            <td *ngIf="record.zip; else empty">{{record.zip}}</td>
+            <td *ngIf="record.geo; else empty">{{record.geo}}</td>
+            <td *ngIf="record.pan; else empty">{{record.pan}}</td>
+            <td *ngIf="record.pin; else empty">{{record.pin}}</td>
+            <td *ngIf="record.id; else empty">{{record.id}}</td>
+            <td *ngIf="record.status; else empty">{{record.status}}</td>
+            <td *ngIf="record.fee; else empty">{{record.fee}}</td>
+            <td *ngIf="record.guid; else empty">{{record.guid}}</td>
+            <td *ngIf="record.date_exit; else empty">{{record.date_exit}}</td>
+            <td *ngIf="record.date_first; else empty">{{record.date_first}}</td>
+            <td *ngIf="record.date_recent; else empty">{{record.date_recent}}</td>
+            <td *ngIf="record.url; else empty">{{record.url}}</td>
+          </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="50">
+            <div class="rowCustom">
+
+              Show <select (change)="changeRows($event.target.value)" ([ngModel])="rowsSelected"><option *ngFor="let number of rowOptions" >{{number}}</option></select> Rows
+              <a class="small" (click)="showAll()">show all</a>
+              <app-pagination
+                [pagesToShow]="10"
+                (goPage)="goToPage($event)"
+                (goNext)="onNext()"
+                (goPrev)="onPrev()"
+                [page]="page"
+                [perPage]="limit"
+                [count]="total">
+              </app-pagination>
+            </div>
+        </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

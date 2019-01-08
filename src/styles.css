@@ -1,0 +1,97 @@
+.pagination {
+width: 100%;
+position: relative;
+flex: 1;
+background: gray;
+display: flex;
+flex-direction: row;
+align-items: center;
+}
+.description {
+position: absolute;
+top: 50%;
+transform: translate(0, -50%);
+left: 10px;
+}
+.page-counts {
+	margin-right: 20px;
+}
+
+.numbers {
+display: table;
+text-align: center;
+flex: 1;
+}
+
+.disabled{
+	color:gray;
+}
+
+.active{
+	color:red;
+}
+.small{
+font-size: 12px;
+color: black;
+text-decoration: underline;
+cursor: pointer;
+}
+
+.wrapper {
+width: 100%;
+height: 800px;
+position: relative;
+border: 1px solid #000;
+background: #efefef;
+overflow: hidden;
+border-radius: 7px;
+}
+
+.container {
+overflow-y: scroll;
+height: 93%;
+border-top: 0;
+}
+
+table {
+border-spacing: 0;
+border-collapse: collapse;
+width: 100%;
+}
+
+td + td {
+border-left: 1px solid #fff;
+}
+
+td, th {
+border-bottom: 1px solid #fff;
+background: #efefef;
+padding: 10px;
+}
+
+thead tr th div,
+tfoot tr td div {
+position: absolute;
+color: #fff;
+padding: 10px;
+margin-left: -10px;
+line-height: normal;
+width: 100%;
+z-index: 2;
+text-align: left;
+font-weight: bold;
+}
+
+
+tfoot tr td div.rowCustom,
+thead tr th div.rowCustom {
+background: gray;
+}
+
+thead tr th div {
+top: 0;
+}
+
+tfoot tr td div {
+bottom: 0;
+}
